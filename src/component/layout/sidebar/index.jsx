@@ -42,7 +42,15 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                     <nav className="mt-10">
                         <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" />
                         <NavItem to="/ui-elements" icon={Component} label="UI Elements" />
-                        <NavItem to="/tables" icon={Rows4} label="Tables" />
+                        <NavItem
+                            to="/tables"
+                            icon={Rows4}
+                            label="Tables"
+                            submenu={[
+                                { to: "/tables/multiple", label: "Multiple Tables" },
+                                { to: "/tables/single", label: "Single Table" },
+                            ]}
+                        />
                     </nav>
                 </div>
             </div>
