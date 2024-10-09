@@ -1,12 +1,10 @@
-
 import { Link, useLocation } from "react-router-dom";
-export default function NavLinkItem({ to, icon: Icon, children }) {
-    const location = useLocation();
 
+export default function NavItem({ to, icon: Icon, label }){
+    const location = useLocation();
     const activeClass = 'bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100';
     const inactiveClass =
         'border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100';
-
     return (
         <Link
             to={to}
@@ -14,10 +12,8 @@ export default function NavLinkItem({ to, icon: Icon, children }) {
                 location.pathname === to ? activeClass : inactiveClass
             }`}
         >
-            {Icon && <Icon />}
-            <span className="mx-4">{children}</span>
+            <Icon />
+            <span className="mx-4">{label}</span>
         </Link>
     );
 };
-
-
