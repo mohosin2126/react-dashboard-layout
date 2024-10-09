@@ -1,4 +1,5 @@
 import {Link, useLocation} from "react-router-dom";
+import {Component, LayoutDashboard, Rows4} from "lucide-react";
 
 
 export default function Sidebar({isOpen,setIsOpen}){
@@ -48,6 +49,7 @@ export default function Sidebar({isOpen,setIsOpen}){
                                 location.pathname === '/dashboard' ? activeClass : inactiveClass
                             }`}
                         >
+                            <LayoutDashboard />
                             <span className="mx-4">Dashboard</span>
                         </Link>
 
@@ -57,6 +59,7 @@ export default function Sidebar({isOpen,setIsOpen}){
                                 location.pathname === '/ui-elements' ? activeClass : inactiveClass
                             }`}
                         >
+                            <Component />
                             <span className="mx-4">UI Elements</span>
                         </Link>
 
@@ -66,7 +69,7 @@ export default function Sidebar({isOpen,setIsOpen}){
                                 location.pathname === '/tables' ? activeClass : inactiveClass
                             }`}
                         >
-
+                            <Rows4 />
                             <span className="mx-4">Tables</span>
                         </Link>
                     </nav>
