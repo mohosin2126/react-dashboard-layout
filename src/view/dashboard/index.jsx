@@ -3,7 +3,7 @@ export default function Dashboard(){
 
     return(
         <>
-            adfsdfsad
+            hello there this is me dashboard
         </>
     )
 }

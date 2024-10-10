@@ -43,7 +43,6 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                         <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" />
                         <NavItem to="/ui-elements" icon={Component} label="UI Elements" />
                         <NavItem
-                            to="/tables"
                             icon={Rows4}
                             label="Tables"
                             submenu={[
