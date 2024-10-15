@@ -1,8 +1,39 @@
-
 import { Component, LayoutDashboard, Rows4 } from "lucide-react";
 import NavItem from "../nav-item/index.jsx";
+import { useState } from "react";
+
+const menuItems = [
+    { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+    { to: "/ui-elements", icon: Component, label: "UI Elements" },
+    {
+        icon: Rows4,
+        label: "Tables",
+        submenu: [
+            { to: "/tables/multiple", label: "Multiple Tables" },
+            { to: "/tables/single", label: "Single Table" },
+        ],
+    },
+    {
+        icon: Rows4,
+        label: "Not Tables",
+        submenu: [
+            { to: "/tables/not-multiple", label: "Not Multiple Tables" },
+            { to: "/tables/not-single", label: "Not Single Table" },
+        ],
+    },
+];
 
 export default function Sidebar({ isOpen, setIsOpen }) {
+    const [openSubmenu, setOpenSubmenu] = useState(null);
+
+    const handleSubmenuToggle = (label) => {
+        setOpenSubmenu((prev) => (prev === label ? null : label));
+    };
+
+    const closeAllSubmenus = () => {
+        setOpenSubmenu(null);
+    };
+
     return (
         <>
             <div className="flex">
@@ -14,9 +45,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                 {/* End Backdrop */}
 
                 <div
-                    className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0 ${
-                        isOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'
-                    }`}
+                    className={`fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0 ${isOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'}`}
                 >
                     <div className="flex items-center justify-center mt-8">
                         <div className="flex items-center">
@@ -34,22 +63,23 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                                     fill="white"
                                 />
                             </svg>
-
                             <span className="mx-2 text-2xl font-semibold text-white">V-Dashboard</span>
                         </div>
                     </div>
 
                     <nav className="mt-10">
-                        <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" />
-                        <NavItem to="/ui-elements" icon={Component} label="UI Elements" />
-                        <NavItem
-                            icon={Rows4}
-                            label="Tables"
-                            submenu={[
-                                { to: "/tables/multiple", label: "Multiple Tables" },
-                                { to: "/tables/single", label: "Single Table" },
-                            ]}
-                        />
+                        {menuItems.map((item, index) => (
+                            <NavItem
+                                key={index}
+                                to={item.to}
+                                icon={item.icon}
+                                label={item.label}
+                                submenu={item.submenu}
+                                openSubmenu={openSubmenu}
+                                handleSubmenuToggle={handleSubmenuToggle}
+                                closeAllSubmenus={closeAllSubmenus}
+                            />
+                        ))}
                     </nav>
                 </div>
             </div>
