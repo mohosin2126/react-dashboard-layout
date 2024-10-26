@@ -21,7 +21,7 @@ A modern and customizable dashboard built with React, Vite, and Tailwind CSS. Th
 - Clone the repository:
 
 ```bash
-git clone[https://github.com/mohosin2126/react-dashboard-layout.git]
+git clone (https://github.com/mohosin2126/react-dashboard-layout.git)
 cd dashboard
 ```
 
